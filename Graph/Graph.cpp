@@ -70,7 +70,6 @@ int searchArc(link* gr[5], char c1, char c2)//търсене на дъга в г
     return flag;
 }
 
-
 void addNode(link* gr[n], char c)//включване на връх в граф
 {
     if (searchNode(gr, c))
@@ -90,7 +89,7 @@ void addNode(link* gr[n], char c)//включване на връх в граф
         {
             gr[j] = new link;
             gr[j]->key = c;
-            gr[j]->next = NULL;
+            gr[j]->next = nullptr;
         }
         else
             cout << " Overflow!!! " << endl;
@@ -204,10 +203,23 @@ void listNode(link* gr[n])//print graph
     {
         if (gr[i])
         {
-            cout << gr[i]->key;
+            link* temp = gr[i+1];
+            cout << (char)gr[i]->key << ": ";
+            while (temp != nullptr)
+            {         
+                cout << (char)temp->key << " -> ";
+                if (temp->next == nullptr)
+                {
+                    cout << "END";
+                }
+                temp = temp->next;
+            }
         }
+        cout << endl;
     }
 }
+
+
 
 
 void main()
